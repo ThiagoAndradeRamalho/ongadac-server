@@ -38,6 +38,7 @@ if (err) {
 // Definindo rotas
 app.use('/api', routes);
 
+
 // Rota para consultar tarefas
 app.get('/api/tarefa', (req, res) => {
 console.log('Consultando tarefas no banco de dados...');
