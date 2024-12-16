@@ -7,6 +7,12 @@ import routes from './src/routes/routes.js';
 // Carregando variáveis de ambiente
 dotenv.config();
 
+// Log para verificar se as variáveis de ambiente foram carregadas
+console.log('Variáveis de ambiente:');
+console.log('DATABASE_USER:', process.env.DATABASE_USER);
+console.log('DATABASE_PASSWORD:', process.env.DATABASE_PASSWORD ? '******' : 'Não definida'); // Não exibir a senha real
+console.log('MYSQL_DATABASE:', process.env.MYSQL_DATABASE);
+
 const app = express();
 
 // Configurações do Express
@@ -22,7 +28,6 @@ user: process.env.DATABASE_USER,
 password: process.env.DATABASE_PASSWORD,
 database: process.env.MYSQL_DATABASE,
 port: 30437,
-connectTimeout: 10000,
 });
 
 // Testando a conexão com o banco de dados
@@ -37,7 +42,6 @@ if (err) {
 
 // Definindo rotas
 app.use('/api', routes);
-
 
 // Rota para consultar tarefas
 app.get('/api/tarefa', (req, res) => {
